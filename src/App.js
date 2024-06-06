@@ -1,25 +1,21 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext';
-import { ThemeProvider } from './context/ThemeContext';
-import PrivateRoute from './components/PrivateRoute';
-import Home from './pages/Home/Home';
-import Login from './pages/Login/Login';
+import ThemeProvider from './context/ThemeContext';
 import ThemeSwitcher from './components/ThemeSwitcher';
+import RecipeList from './components/RecipeList';
 
 const App = () => {
   return (
-    <AuthProvider>
-      <ThemeProvider>
-        <Router>
+    <ThemeProvider>
+      <div className="App">
+        <header className="App-header">
+          <h1>Rezepte App</h1>
           <ThemeSwitcher />
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <PrivateRoute path="/" element={<Home />} />
-          </Routes>
-        </Router>
-      </ThemeProvider>
-    </AuthProvider>
+        </header>
+        <main>
+          <RecipeList />
+        </main>
+      </div>
+    </ThemeProvider>
   );
 };
 
